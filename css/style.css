@@ -3,3 +3,45 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+header {
+  top: 0;
+  background-color: #eee;
+  position: fixed;
+  width: 100%;
+}
+header .container {
+  background-color: #fafafa;
+  min-height: 50px;
+}
+#top-section {
+  margin-top: 50px;
+  background-color: #faa;
+}
+#top-section .container {
+  height: 300px;
+}
+#top-section p {
+  padding: 30px;
+  background-color: #afa;
+  margin-top: 10px;
+  box-shadow: 4px 4px 15px 1px #000000;
+}
+#best-section {
+  background-color: linear-gradient(0deg, #edcd5a, #ffffff);
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+}
+#best-section .container {
+  min-height: 100px;
+}
+#best-section .container img {
+  margin: 10px;
+  outline: 4px solid #e88d4a;
+}
+#low-section {
+  background-color: #77d8db;
+}
+#low-section .container {
+  background-color: #4c4885;
+  height: 150px;
+  padding: 20px;
+}
