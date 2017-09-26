@@ -1,0 +1,32 @@
+.from-language img,
+.to-language img {
+  max-width: 30px;
+  transition: all 1s;
+}
+
+.active img {
+  max-width: 60px;
+}
+
+#question {
+  font-size: 30px;
+  background-color: #F5F97B;
+  color: #48C01D;
+}
+
+#points {
+  font-size: 20px;
+  color: #3ACA06;
+}
+
+#msg {
+  width: 100px;
+}
+
+.success {
+  color: #25EE25;
+}
+
+.error {
+  color: #CE2D3D;
+}
