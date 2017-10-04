@@ -3,14 +3,22 @@
 .category img {
     max-width: 30px;
     transition: all 1s;
+    outline: 1px solid #48C01D;
+}
+
+.category img {
+  max-width: 40px;
 }
 
 .active img {
     max-width: 60px;
 }
 
-.category img {
-  max-width: 40px;
+.from-language, .to-language, .category {
+    color: #48C01D;
+    padding: 10px;
+    text-align: justify;
+
 }
 
 #question {
