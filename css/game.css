@@ -1,5 +1,6 @@
 .from-language img,
-.to-language img {
+.to-language img,
+.category img {
     max-width: 30px;
     transition: all 1s;
 }
@@ -10,7 +11,6 @@
 
 .category img {
   max-width: 40px;
-  
 }
 
 #question {

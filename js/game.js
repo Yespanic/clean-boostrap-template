@@ -32,16 +32,18 @@ $('.to-language a').click(function(e) {
     }
 });
 
-$('.category').click(function() {
+$('.category a').click(function() {
     category = $(this).attr('data-category');
-
+    questions = allQuestions[category];
+    $('.category a').removeClass('active');
+    $(this).addClass('active');
 });
 
 var points = parseInt(localStorage.getItem('points')) || 0;
 var fromLanguage = '';
 var toLanguage = '';
 var category = '';
-var questions = 
+var questions = [];
 
 
 function correct() {
@@ -56,7 +58,7 @@ function updatePoints() {
     $('#points').html(points);
 }
 
-tasty = [{
+var tasty = [{
     russian: "яблоко",
     english: "apple",
     spain: "manzana"
@@ -94,7 +96,7 @@ tasty = [{
     spain: "sesamo"
 }];
 
-dammit = [{
+var dammit = [{
     russian: "сука",
     english: "bitch",
     spain: "perra"
@@ -132,7 +134,7 @@ dammit = [{
     spain: "bastardo"
 }];
 
-travel = [{
+var travel = [{
     russian: "где я?",
     english: "where i am?",
     spain: "donde estoy?"
@@ -169,5 +171,10 @@ travel = [{
     english: "foreigner",
     spain: "extranjero"
 }];
+var allQuestions = {
+    tasty: tasty,
+    dammit: dammit,
+    travel: travel
+}
 
 updatePoints();
