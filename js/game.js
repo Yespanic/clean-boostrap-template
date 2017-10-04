@@ -32,10 +32,16 @@ $('.to-language a').click(function(e) {
     }
 });
 
+$('.category').click(function() {
+    category = $(this).attr('data-category');
+
+});
+
 var points = parseInt(localStorage.getItem('points')) || 0;
 var fromLanguage = '';
 var toLanguage = '';
-
+var category = '';
+var questions = 
 
 
 function correct() {
@@ -50,7 +56,7 @@ function updatePoints() {
     $('#points').html(points);
 }
 
-var questions = [{
+tasty = [{
     russian: "яблоко",
     english: "apple",
     spain: "manzana"
@@ -86,6 +92,82 @@ var questions = [{
     russian: "кунжут",
     english: "sesame",
     spain: "sesamo"
+}];
+
+dammit = [{
+    russian: "сука",
+    english: "bitch",
+    spain: "perra"
+}, {
+    russian: "задница",
+    english: "ass",
+    spain: "culo"
+}, {
+    russian: "черт",
+    english: "heck",
+    spain: "infierno"
+}, {
+    russian: "тупица",
+    english: "stupid",
+    spain: "estúpido"
+}, {
+    russian: "идиот",
+    english: "idiot",
+    spain: "idiota"
+}, {
+    russian: "дерьмо",
+    english: "bullshit",
+    spain: "mierda"
+}, {
+    russian: "мудак",
+    english: "asshole",
+    spain: "Estúpido"
+}, {
+    russian: "простофиля",
+    english: "nitwit",
+    spain: "simplón"
+}, {
+    russian: "ублюдок",
+    english: "bastard",
+    spain: "bastardo"
+}];
+
+travel = [{
+    russian: "где я?",
+    english: "where i am?",
+    spain: "donde estoy?"
+}, {
+    russian: "багаж",
+    english: "luggage",
+    spain: "equipaje"
+}, {
+    russian: "страховка",
+    english: "insurance",
+    spain: "seguro"
+}, {
+    russian: "экскурсия",
+    english: "excursion",
+    spain: "excursión"
+}, {
+    russian: "поездка",
+    english: "journey",
+    spain: "viaje"
+}, {
+    russian: "чемодан",
+    english: "suitcase",
+    spain: "maleta"
+}, {
+    russian: "прибытие",
+    english: "arrival",
+    spain: "llegada"
+}, {
+    russian: "внутренние рейсы",
+    english: "domestic flights",
+    spain: "vuelos domésticos"
+}, {
+    russian: "иностранец",
+    english: "foreigner",
+    spain: "extranjero"
 }];
 
 updatePoints();

@@ -8,6 +8,11 @@
     max-width: 60px;
 }
 
+.category img {
+  max-width: 40px;
+  
+}
+
 #question {
     font-size: 30px;
     background-color: #F5F97B;
