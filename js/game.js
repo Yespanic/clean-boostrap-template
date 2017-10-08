@@ -1,43 +1,9 @@
-$('#question').click(function() {
-    if (!fromLanguage || !toLanguage) {
-        return;
-    }
-    var index = Math.floor(Math.random() * questions.length);
-    var questionObject = questions[index];
-    if (prompt(questionObject[fromLanguage]) == questionObject[toLanguage]) {
-        correct();
-        points++;
-    } else {
-        inCorrect();
-        points--;
-    }
-    localStorage.setItem('points', points);
-    updatePoints();
-});
-
-$('.from-language a').click(function(e) {
-    e.preventDefault();
-    if ($(this).attr('data-language') != toLanguage) {
-        $('.from-language a').removeClass('active');
-        fromLanguage = $(this).attr('data-language');
-        $(this).addClass('active');
-    }
-});
-$('.to-language a').click(function(e) {
-    e.preventDefault();
-    if ($(this).attr('data-language') != fromLanguage) {
-        $('.to-language a').removeClass('active');
-        toLanguage = $(this).attr('data-language');
-        $(this).addClass('active');
-    }
-});
-
-$('.category a').click(function() {
-    category = $(this).attr('data-category');
-    questions = allQuestions[category];
-    $('.category a').removeClass('active');
-    $(this).addClass('active');
-});
+upDateFromLanguage(fromLanguage);
+upDateToLanguage(toLanguage);
+upDateCategory(category);
+localStorage.getItem('from-language');
+localStorage.getItem('to-language');
+localStorage.getItem('category');
 
 var points = parseInt(localStorage.getItem('points')) || 0;
 var fromLanguage = '';
@@ -54,7 +20,7 @@ function inCorrect() {
     $('#msg').html('<p class="error">f*ck</p>');
 }
 
-function updatePoints() {
+function updatePoints(points) {
     $('#points').html(points);
 }
 
@@ -177,4 +143,4 @@ var allQuestions = {
     travel: travel
 }
 
-updatePoints();
+updatePoints(points);
