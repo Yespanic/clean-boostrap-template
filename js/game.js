@@ -1,15 +1,12 @@
-upDateFromLanguage(fromLanguage);
-upDateToLanguage(toLanguage);
-upDateCategory(category);
+var points = parseInt(localStorage.getItem('points')) || 0;
+var fromLanguage = upDateFromLanguage(fromLanguage);
+var toLanguage = upDateToLanguage(toLanguage);
+var category = upDateCategory(category);
+var questions = [];
+
 localStorage.getItem('from-language');
 localStorage.getItem('to-language');
 localStorage.getItem('category');
-
-var points = parseInt(localStorage.getItem('points')) || 0;
-var fromLanguage = '';
-var toLanguage = '';
-var category = '';
-var questions = [];
 
 
 function correct() {
