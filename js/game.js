@@ -1,13 +1,10 @@
+var fromLanguage = localStorage.getItem('from-language');
+var toLanguage = localStorage.getItem('to-language');
+var category = localStorage.getItem('category');
 var points = parseInt(localStorage.getItem('points')) || 0;
-var fromLanguage = upDateFromLanguage(fromLanguage);
-var toLanguage = upDateToLanguage(toLanguage);
-var category = upDateCategory(category);
-var questions = [];
-
-localStorage.getItem('from-language');
-localStorage.getItem('to-language');
-localStorage.getItem('category');
-
+// var fromLanguage = upDateFromLanguage(fromLanguage);
+// var toLanguage = upDateToLanguage(toLanguage);
+// var category = upDateCategory(category);
 
 function correct() {
     $('#msg').html('<p class="success">alright</p>');
@@ -20,6 +17,24 @@ function inCorrect() {
 function updatePoints(points) {
     $('#points').html(points);
 }
+var languageImages = {
+    russian: 'img/flags/russian.png',
+    english: 'img/flags/english.png',
+    spain: 'img/flags/spain.png'
+};
+
+var categoryImages = {
+    tasty: 'img/category/tasty.jpg',
+    dammit: 'img/category/dammit.jpg',
+    travel: 'img/category/travel.png'
+};
+
+var showSettings = function() {
+    $('.settings-wrapper').append('<img src="' + languageImages[fromLanguage]+'">');
+    $('.settings-wrapper').append('<img src="' + languageImages[toLanguage]+'">');
+    $('.settings-wrapper').append('<img src="' + categoryImages[category]+'">');
+};
+showSettings();
 
 var tasty = [{
     russian: "яблоко",
@@ -139,5 +154,7 @@ var allQuestions = {
     dammit: dammit,
     travel: travel
 }
+
+var questions = allQuestions[category];
 
 updatePoints(points);

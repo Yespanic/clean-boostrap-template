@@ -15,7 +15,7 @@ $('#to-cards').on('click', '.button', function(){
   	points++;
   } else {
   	activeCard.removeClass('active');
-  	incorrect();
+  	inCorrect();
   	points--;
   }
   localStorage.setItem('points', points);
@@ -41,12 +41,10 @@ $('#start-game-2').click(function(e) {
   }
   var actQuestionsLength = actualQuestions.length;
   for (var i = 0; i < actQuestionsLength; i++) {
-  console.log('check');
   	index = Math.floor(Math.random() * actualQuestions.length);
-    console.log(index);
     $('#to-cards').append('<span class="button">' + actualQuestions.splice(index, 1)[0][toLanguage]) + '</span>';
   }
 });
 
-var cartNum = 3;
+var cartNum = 4;
 var actualQuestions = [];
