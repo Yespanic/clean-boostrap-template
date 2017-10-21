@@ -1,0 +1,9 @@
+.category img {
+	width: 60px;
+	transition: all 1s;
+}
+
+.active img {
+	width: 100px;
+	outline: 1px solid red;
+}
