@@ -1,3 +1,30 @@
+
+//$('#play').append('category');
+
+$('#play').click(function(e) {
+	e.preventDefault();
+	if (number > questions.lenght) {
+		alert('finish');
+		return;
+	}
+	actualQuestions = [];
+  var index = 0;
+  for (var i = 0; i < number; i++) {
+    index = Math.floor(Math.random() * questions.length);
+    actualQuestions.push(questions.splice(index, 1)[0]);
+  }
+  $('#term').html('');
+  $('#meaning').html('');
+  for (var i = 0, i < actualQuestions.lenght; i++) {
+  	$('#term').append('<span class="button" data-to="' + actualQuestions[i][meaning] + '">' + actualQuestions[i][term]) + '</span>';
+  }
+  var actQuestionsLength = actualQuestions.length;
+  for (var i = 0; i < actQuestionsLength; i++) {
+  	index = Math.floor(Math.random() * actualQuestions.length);
+  	$('#meaning').append('<span class = "button">' + actualQuestions.splice(index, 1)[0][meaning]) + '</span>';
+  }
+});
+
 var html = [{
 	tag: "<em>",
 	meaning: "акцентирование текста(курсив)"
@@ -79,7 +106,8 @@ var html = [{
 }, {
 	tag: "<ul>",
 	meaning: "маркированный список" 
-}]
+}];
+
 
 var css = [{
 	style: "float",
@@ -171,4 +199,12 @@ var css = [{
 }, {
 	style: "word-break",
 	meaning: "перенос строк внутри слов" 
-}]
+}];
+
+var questions = {
+	html: html,
+	css: css
+}
+
+var number = 3;
+var actualQuestions = [];
