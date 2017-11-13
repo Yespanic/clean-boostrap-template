@@ -1,9 +1,99 @@
+.container {
+	width: 800px;
+	margin: 15px;
+	height: 100%;
+	background-color: #E0FFFF;
+	border: 5px groove #7FFFD4;
+}
+
+#meaning {
+	display: flex;
+}
+
+#points,
+#msg {
+	color: #006400;
+	margin: 10px;
+}
+
+a#play {
+	color: #006400;
+	text-decoration: none;
+	font-size: 2em;
+	margin-left: 300px;
+}
+
+#play img {
+	width: 50px;
+}
+
+.button:hover {
+	cursor: pointer;
+}
+:hover {
+	cursor: default;
+}
+
+.button {
+	padding: 5px;
+	border: 1px solid #00FF00;
+	margin-right: 5px;
+}
+
+.button.active {
+	border: 2px solid #006400;
+	background-color: #ADFF2F;
+}
+
 .category img {
 	width: 60px;
 	transition: all 1s;
 }
 
 .active img {
-	width: 100px;
-	outline: 1px solid red;
+	width: 80px;
+	border: 2px groove #9ACD32;
+	background-color: #FFFFE0;
+	padding: 5px;
+	margin-right: 10px;
+}
+
+.success {
+	color: #FFFF00;
+}
+
+.error {
+	color: #8B0000;
+}
+
+h3 {
+	color: #006400;
+}
+
+#term,
+#meaning {
+	padding: 5px;
+	margin: 10px;
+}
+
+ul li {
+	display: inline-block;
+	border: 3px groove #9ACD32;
+	padding: 5px; 
+	margin-right: 10px;
+	margin-top: 15px;
+	background-color: #FFFFE0;
+
+}
+ul li a {
+	color: #006400;
+	text-decoration: none;
+}
+
+.category {
+	margin: 10px;
+}
+
+#term {
+	margin-top: 20px;
 }

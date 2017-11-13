@@ -1,210 +1,255 @@
+var what = localStorage.getItem('category');
+var points = parseInt(localStorage.getItem('points')) || 0;
+var images = {
+	html: 'img/logo-html.png',
+	css: 'img/logo-css2.png',
+}
 
-//$('#play').append('category');
+$('#play').append('<img src="' +images[what] +'" alt="">');
 
-$('#play').click(function(e) {
+function correct() {
+    $('#msg').html('<p class="success">YES</p>');
+}
+function inCorrect() {
+    $('#msg').html('<p class="error">NO</p>');
+}
+function updatePoints(points) {
+    $('#points').html('<span>points</span> ' + points);
+}
+
+$('#term').on('click', '.button', function(){
+	$('#term .button').removeClass('active');
+	$(this).addClass('active');
+});
+$('#meaning').on('click', '.button', function(){
+	var activeCard = $('#term .active');
+	if (!activeCard){
+		return;
+	};
+	if (activeCard.attr('data-to') == $(this).text()){
+		activeCard.remove();
+		$(this).remove();
+		correct();
+  		points++;
+	} else {
+  	activeCard.removeClass('active');
+  	inCorrect();
+  	points--;
+  }
+  localStorage.setItem('points', points);
+  updatePoints(points);
+});
+
+
+var number = 3;
+
+$('#play').click(function(e){
 	e.preventDefault();
-	if (number > questions.lenght) {
+	if (number > questions.length){
 		alert('finish');
 		return;
 	}
 	actualQuestions = [];
-  var index = 0;
-  for (var i = 0; i < number; i++) {
-    index = Math.floor(Math.random() * questions.length);
-    actualQuestions.push(questions.splice(index, 1)[0]);
-  }
-  $('#term').html('');
-  $('#meaning').html('');
-  for (var i = 0, i < actualQuestions.lenght; i++) {
-  	$('#term').append('<span class="button" data-to="' + actualQuestions[i][meaning] + '">' + actualQuestions[i][term]) + '</span>';
-  }
-  var actQuestionsLength = actualQuestions.length;
-  for (var i = 0; i < actQuestionsLength; i++) {
-  	index = Math.floor(Math.random() * actualQuestions.length);
-  	$('#meaning').append('<span class = "button">' + actualQuestions.splice(index, 1)[0][meaning]) + '</span>';
-  }
+	var index = 0;
+	for (var i = 0; i < number; i++){
+		index = Math.floor(Math.random() * questions.length);
+		actualQuestions.push(questions.splice(index, 1)[0]);
+	}
+	$('#term').html('');
+	$('#meaning').html('');
+	for (var i = 0; i < actualQuestions.length; i++){
+	// debugger;
+		$('#term').append('<span class="button" data-to="' + actualQuestions[i]['meaning'] + '">' + actualQuestions[i]['termin'] + '</span>');
+	}
+	var actQuestionsLength = actualQuestions.length;
+	for (var i = 0; i < actQuestionsLength; i++){
+		index = Math.floor(Math.random() * actualQuestions.length);
+		$('#meaning').append('<span class="button">' + actualQuestions.splice(index, 1)[0]['meaning']) + '</span>';
+	}
 });
 
 var html = [{
-	tag: "<em>",
+	termin: "&lt;em&gt;",
 	meaning: "акцентирование текста(курсив)"
 }, {
-	tag: "<hr>",
+	termin: "&lt;hr&gt;",
 	meaning: "горизонтальная линия"
 }, {
-	tag: "<i>",
+	termin: "&lt;i&gt;",
 	meaning: "курсивное начертание шрифта"
 }, {
-	tag: "<input>",
+	termin: "&lt;input&gt;",
 	meaning: "элемент формы(флажки, кнопки..)" 
 }, {
-	tag: "<li>",
+	termin: "&lt;li&gt;",
 	meaning: "элемент списка" 
 }, {
-	tag: "<link>",
+	termin: "&lt;link&gt;",
 	meaning: "связь с внешним документом(head only)" 
 }, {
-	tag: "<map>",
+	termin: "&lt;map&gt;",
 	meaning: "связывает кооржинаты областей с изображением" 
 }, {
-	tag: "<area> ",
+	termin: "&lt;area&gt; ",
 	meaning: "активные области изображения(ссылки)" 
 }, {
-	tag: "<marquee>",
+	termin: "&lt;marquee&gt;",
 	meaning: "создает бегущую строку на странице" 
 }, {
-	tag: "<meta>",
+	termin: "&lt;meta&gt;",
 	meaning: "хранение информации для браузеров и систем" 
 }, {
-	tag: "<nobr>",
+	termin: "&lt;nobr&gt;",
 	meaning: "браузер отображает текст без переносов" 
 }, {
-	tag: "<nav>",
+	termin: "&lt;nav&gt;",
 	meaning: "задает навигацию по сайту" 
 }, {
-	tag: " <main>",
+	termin: " &lt;main&gt;",
 	meaning: "основное содержание документа" 
 }, {
-	tag: "<mark>",
+	termin: "&lt;mark&gt;",
 	meaning: "помечает текст как выделенный" 
 }, {
-	tag: "<menu>",
-	meaning: "контейнером для тега <command> и создания меню" 
+	termin: "&lt;menu&gt;",
+	meaning: "контейнером для тега &lt;command&gt; и создания меню" 
 }, {
-	tag: "<figure>",
+	termin: "&lt;figure&gt;",
 	meaning: "группирование любых элементов" 
 }, {
-	tag: "<ol>",
+	termin: "&lt;ol&gt;",
 	meaning: "устанавливает нумированный список" 
 }, {
-	tag: "<p>",
+	termin: "&lt;p&gt;",
 	meaning: "текстовый абзац" 
 }, {
-	tag: "<q>",
+	termin: "&lt;q&gt;",
 	meaning: "выделение цитать в тексте" 
 }, {
-	tag: "<section>",
+	termin: "&lt;section&gt;",
 	meaning: "задаёт раздел документа" 
 }, {
-	tag: "<select>",
+	termin: "&lt;select&gt;",
 	meaning: "раскрывающийся список или множественного выбора" 
 }, {
-	tag: "<small>",
+	termin: "&lt;small&gt;",
 	meaning: "уменьшает размер шрифта на единицу" 
 }, {
-	tag: "<span>",
+	termin: "&lt;span&gt;",
 	meaning: "определение строчного элемента" 
 }, {
-	tag: "<sub>",
+	termin: "&lt;sub&gt;",
 	meaning: "отображает нижний индекс" 
 }, {
-	tag: "<sup>",
+	termin: "&lt;sup&gt;",
 	meaning: "отображает верхний индекс" 
 }, {
-	tag: "<tt>",
+	termin: "&lt;tt&gt;",
 	meaning: "отображает моноширинный текст" 
 }, {
-	tag: "<ul>",
+	termin: "&lt;ul&gt;",
 	meaning: "маркированный список" 
 }];
 
 
 var css = [{
-	style: "float",
+	termin: "float",
 	meaning: "сторона выравнивания элемента" 
 }, {
-	style: "color",
+	termin: "color",
 	meaning: "цвет текста" 
 }, {
-	style: "columns",
+	termin: "columns",
 	meaning: "задает ширину и количество колонок текста" 
 }, {
-	style: "cursor",
+	termin: "cursor",
 	meaning: "форма курсора в пределах элемента" 
 }, {
-	style: "direction",
+	termin: "direction",
 	meaning: "направление текста" 
 }, {
-	style: "display",
+	termin: "display",
 	meaning: "отображение элемента в документе(многоцелевое)" 
 }, {
-	style: "filter",
+	termin: "filter",
 	meaning: "применение художественных эффектов" 
 }, {
-	style: "flex",
+	termin: "flex",
 	meaning: "параметры заполнения доступного пространства" 
 }, {
-	style: "font",
+	termin: "font",
 	meaning: "задает несколько характеристик текста" 
 }, {
-	style: "hyphens",
+	termin: "hyphens",
 	meaning: "расставление переносов слов" 
 }, {
-	style: "list-style",
+	termin: "list-termin",
 	meaning: "стиль, положение маркера списка" 
 }, {
-	style: "margin",
+	termin: "margin",
 	meaning: "отступ от границы текущего до внутренней границы его родительского элемента" 
 }, {
-	style: "object-fit",
+	termin: "object-fit",
 	meaning: "соотношение сторон заменяемых элементов и масштабирование" 
 }, {
-	style: "opacity",
+	termin: "opacity",
 	meaning: "прозрачность элемента" 
 }, {
-	style: "order",
+	termin: "order",
 	meaning: "порядок вывода флексов внутри флекс-контейнера" 
 }, {
-	style: "outline",
+	termin: "outline",
 	meaning: "цвет, стиль, толщина всех границ элемента" 
 }, {
-	style: "overflow",
+	termin: "overflow",
 	meaning: "отображение непомещающегося содержания блочного элемента" 
 }, {
-	style: "padding",
+	termin: "padding",
 	meaning: "расстояние от внутреннего края рамки элемента до содержания" 
 }, {
-	style: "position",
+	termin: "position",
 	meaning: "позиционирование элемента относительно браузера или др.объектов" 
 }, {
-	style: "quotes",
+	termin: "quotes",
 	meaning: "устанавливает тип кавычек" 
 }, {
-	style: "tab-size",
+	termin: "tab-size",
 	meaning: "изменение ширины отступа клавишей tab" 
 }, {
-	style: "text-align",
+	termin: "text-align",
 	meaning: "горизонтальное выравнивание текста в элементе" 
 }, {
-	style: "transform",
+	termin: "transform",
 	meaning: "трансформирует элемент(вращает, сдвигает)" 
 }, {
-	style: "transition",
+	termin: "transition",
 	meaning: "устанавливает эффект перехода между двумя состояниями элемента" 
 }, {
-	style: "user-select",
+	termin: "user-select",
 	meaning: "выделение текста и других элементов" 
 }, {
-	style: "vertical-align",
+	termin: "vertical-align",
 	meaning: "выравнивает элемент по вертикали" 
 }, {
-	style: "visibility",
+	termin: "visibility",
 	meaning: "отображение или скрытие элемента" 
 }, {
-	style: "white-space",
+	termin: "white-space",
 	meaning: "отображение пробелов между словами" 
 }, {
-	style: "width",
+	termin: "width",
 	meaning: "ширина содержимого элемента" 
 }, {
-	style: "word-break",
+	termin: "word-break",
 	meaning: "перенос строк внутри слов" 
 }];
 
-var questions = {
+var allQuestions = {
 	html: html,
 	css: css
-}
+};
 
-var number = 3;
+var questions = allQuestions[what];
 var actualQuestions = [];
+
+updatePoints(points);
