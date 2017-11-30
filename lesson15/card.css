@@ -5,3 +5,7 @@
 img {
 	width: 30px;
 }
+
+.button.active {
+	border: 1px solid green;
+}
